@@ -14,7 +14,22 @@ def hello():
         "code":200,
         "message":"hello Flask"
     } #json 형태로 반환되는형태
-    return result
+    return result\
+
+@app.route("/db")
+def db():
+    a = db_connector()
+    return a
+def db_connector():
+    db = pymysql.connect(host='svc-mysql', port=3306, user='root', passwd='qwer1234', db='yoskr_db', charset='utf8')
+    cursor = db.cursor()
+    sql = '''SELECT * FROM yoskr_db.student;'''
+    cursor.execute(sql)
+    result = cursor.fetchall()
+    db.close()
+    return str(result)
+
+
 #장고기준으로 서버실행해주는애
 if __name__ == '__main__':
     app.run(host='0.0.0.0',port=80)
