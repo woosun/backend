@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: prod
+  name: was-deploy
+spec:
+  selector:
+    matchLabels:
+      servertype: was-cpu
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        servertype: was-cpu
+    spec:
+      containers:
+      - name: was
+        image: yoskr/gunicon:latest
+        resources:
+          requests:
+            cpu: 100m
+          limits:
+            cpu: 200m
+        ports:
+        - containerPort: 8080
