@@ -1,7 +1,5 @@
 FROM python:3.9
-WORKDIR /apps
-ADD requirements.txt /apps/
-RUN pip install -r /apps/requirements.txt
-ADD *.py /apps/
+ADD ./* /
+RUN pip install -r /requirements.txt
 EXPOSE 8000
-CMD /usr/local/bin/gunicorn --bind 0.0.0.0:8000 wsgi:app
+CMD gunicorn --bind 0.0.0.0:8080 wsgi:app
