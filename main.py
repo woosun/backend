@@ -2,7 +2,7 @@ from flask import Flask
 from flask_cors import CORS
 import pymysql
 
-host = "svc-mysql "
+host = "svc-mysql"
 port = 3306
 user = "root"
 passwd = "qwer1234"
