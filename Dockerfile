@@ -1,4 +1,7 @@
 FROM python:3.8
-ADD ./* /
-RUN pip install Flask Flask-Cors gunicorn pymysql
-CMD gunicorn --bind 0.0.0.0:8080 wsgi:app
+WORKDIR /apps
+ADD requirements.txt /apps/
+RUN pip install -r /apps/requirements.txt
+ADD *.py /apps/
+EXPOSE 8000
+CMD /usr/local/bin/gunicorn --bind 0.0.0.0:8000 wsgi:app
