@@ -2,14 +2,12 @@ from flask import Flask
 from flask_cors import CORS
 import pymysql
 
-host = "svc-mysql"
+host = "svc-mysql "
 port = 3306
 user = "root"
 passwd = "qwer1234"
 db = "yoskr_db"
 conn = pymysql.connect(host=host, port=port, user=user, passwd=passwd, db=db, charset='utf8')
-
-
 
 app = Flask(__name__)
 CORS(app, resources={r"/*":{"origins":"*"}})
@@ -23,9 +21,7 @@ def main():
 
 @app.route("/hello")
 def hello():
-    a = db_connector()
-    result = { "code":200 }
-    result = [result, a]
+    result = [{ "code":200 }, { "message": db_connector()}]
     return result
 def db_connector():
     cursor = conn.cursor()
