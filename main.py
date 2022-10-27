@@ -21,7 +21,7 @@ def main():
 
 @app.route("/hello")
 def hello():
-    result = [{ "code":200 }, { "message": db_connector()}]
+    result = { "code":200 ,"message": db_connector()}
     return result
 def db_connector():
     cursor = conn.cursor()
