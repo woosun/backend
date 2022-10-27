@@ -1,12 +1,13 @@
 from flask import Flask
 from flask_cors import CORS
 import pymysql
+import os
 
-host = "svc-mysql"
-port = 3306
-user = "root"
-passwd = "qwer1234"
-db = "yoskr_db"
+host = os.environ['DB_HOST']
+port = os.environ['DB_PORT']
+user = os.environ['DB_USER']
+passwd = os.environ['MYSQL_ROOT_PASSWORD']
+db = os.environ['DB_DBNAME']
 conn = pymysql.connect(host=host, port=port, user=user, passwd=passwd, db=db, charset='utf8')
 
 app = Flask(__name__)

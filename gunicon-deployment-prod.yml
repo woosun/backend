@@ -16,6 +16,11 @@ spec:
       containers:
       - name: was
         image: yoskr/gunicon:latest
+        envFrom:
+          - configMapRef:
+              name: cm-was  #cm-dev 설정파일을 불러오자
+          - secretRef:
+              name: sec-mysql  #mysql 설정파일을 불러오자
         resources:
           requests:
             cpu: 100m
