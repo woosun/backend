@@ -1,6 +1,6 @@
 - hosts: was
   vars_files:
-    - /root/backend/env_db_host.yaml
+    - /root/env_db_host.yaml
   tasks:
   - name: "start flask server & db 환경변수 불러오기"
     shell: |
