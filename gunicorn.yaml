@@ -8,3 +8,14 @@
     register: result
   - debug:
       msg: "{{result}}"
+  - name: "start flask server & db 환경변수 불러오기"
+    shell: |
+      cd ./backend/
+      chmod +x ./was_start.sh
+      sed -i -e 's/\r//g' ./was_start.sh
+      nohup ./was_start.sh &
+      sleep 1
+    become: yes
+    register: result
+  - debug:
+      msg: "{{result}}"
