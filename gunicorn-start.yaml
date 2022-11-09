@@ -1,4 +1,4 @@
-- hosts: was
+- hosts: localhost
   vars_files:
     - /root/env_db_host.yaml
   tasks:
